@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Bhaskara</title>
+</head>
+
+<body>
+
+    <form>
+        <label for="valorA">Valor A:</label>
+        <input type="number" id="valorA"> <br>
+        <label for="valorB">Valor B:</label>
+        <input type="number" id="valorB"> <br>
+        <label for="valorC">Valor C:</label>
+        <input type="number" id="valorC"> <br>
+    </form>
+
+    <button onclick="calculaBhaskara()">Clique aqui para calcular</button>
+
+    <div id="resultado-x-uma-linha"></div>
+    <div id="resultado-x-duas-linha"></div>
+
+    <script>
+        function calculaBhaskara() {
+            const valorA = Number(document.getElementById("valorA").value);
+            const valorB = Number(document.getElementById("valorB").value);
+            const valorC = Number(document.getElementById("valorC").value);
+
+            const delta = (valorB * valorB) - ((4 * valorA) * valorC);
+
+            if (delta < 0) {
+                document.getElementById("resultado-x-uma-linha").innerHTML = "não é possível calcular"
+            } else if (delta > 0) {
+                const bhaskaraX1 = (-valorB + Math.sqrt(delta)) / (2 * valorA);
+                document.getElementById("resultado-x-uma-linha").innerHTML = "x2: " + (bhaskaraX1).toFixed(2);
+
+                const bhaskaraX2 = (-valorB - Math.sqrt(delta)) / (2 * valorA);
+                document.getElementById("resultado-x-duas-linha").innerHTML = "x2: " + (bhaskaraX2).toFixed(2);
+            } else {
+                const bhaskara = (-valorB) / (2 * valorA);
+                document.getElementById("resultado-x-uma-linha").innerHTML = "x: " + (bhaskara).toFixed(2);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
